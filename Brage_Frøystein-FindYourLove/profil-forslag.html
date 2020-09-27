@@ -24,10 +24,10 @@
 		
 			<section>
 				<label>Tast inn ønsket alder</label>
-				<input id="user-input-alder" type="text"><br>
+				<input id="user-input-alder" type=number><br>
 				<label>Mann eller kvinne?</label>
 				<input id="user-input-kjønn" type="text">
-				<input type="button" value="Vis forslag" id="the-magic-button" onclick="loveCalculator()">
+				<input type="button" value="Vis forslag" onclick="loveCalculator()">
 			</section>
 			
 			<section>
@@ -37,12 +37,11 @@
 
 			</section>
 
-	<script type="text/javascript">
+		<script type="text/javascript">
 		
 		var anbefaltProfil = document.getElementById("anbefalt-profil");
-
-		var userInputKjønn = "user-input-kjønn";
-		var userInputAlder = "user-input-alder";
+		var userInputKjønn = document.getElementById("user-input-kjønn");
+		var userInputAlder = document.getElementById("user-input-alder");
 
 		/* Plasser i arrays: Charles 0 - Lars 1 - Stine 2 - Zelda 3*/
 		var bildeArray = ["Charles.jpg", "Lars.jpg", "Stine.jpg", "Zelda.jpg"];
@@ -54,23 +53,38 @@
 		"Ikke for å skryte, men jeg er ganske rå på baking og kickboxing.", /*Stine*/
 		"Har lyst til å jobbe med programmering! Bilde er meg som prøver å se hva som er galt med koden min i JS",] /*Zelda*/
 
-		/* lagde en test-funksjon for respons fra vis forslag knappen
-			
+		/*funskjonen kjører først en if else på kjønn, deretter har disse sin egen underordnede if else til¨å sjekke alder*/
 		function loveCalculator (){
-			document.getElementById("anbefalt-profil").innerHTML = "test";
-		} */ 
+			kjønn = userInputKjønn.value; /*Dette var nøkkelen til hvorfor jeg ikke fikk det til første gangen*/
+			alder = userInputAlder.value; /*Hadde ikke assignet values til userinputboxene*/
+			if (kjønn === "kvinne") {
+				if (alder >= 25) { /*Her skal Stine*/
+					document.getElementById("anbefalt-profil").innerHTML = `
+					<img src="images/${bildeArray[2]}">
+					<p>For deg anbefaler vi ${alderArray[2]} år gamle ${navnArray[2]}!<br>Kontakt henne da vel!</p>`;
+				}
+				else if (alder < 25){/*Her skal Zelda*/
+					document.getElementById("anbefalt-profil").innerHTML = `
+					<img src="images/${bildeArray[3]}">
+					<p>Vi tror ${alderArray[3]} år gamle ${navnArray[3]} og du passer bra sammen!<br>Fort deg før noen andre prøver seg!</p>`;
+				}
+			}
+			else if (kjønn === "mann"){
+				if (alder >= 25) {/*Her skal Charles*/
+					document.getElementById("anbefalt-profil").innerHTML = `
+					<img src="images/${bildeArray[0]}">
+					<p>${navnArray[0]} er i området!<br>Du kan møte han allerede ikveld!</p>`;
+				}
+				else if (alder < 25){/*Her skal Lars*/
+					document.getElementById("anbefalt-profil").innerHTML = `
+					<img src="images/${bildeArray[1]}">
+					<p>${alderArray[1]} år gamle ${navnArray[1]} har nettopp blitt medlem hos oss!<br>Bli han første kjærlighet</p>`;
+				}
+			}
 
-		function loveCalculator (){
-			/* to if-er her, en for om man velger mann eller kvinne, med if inne i ifs for aldersutregningen*/
-			if (userInputKjønn = "Mann") {
-				document.getElementById("anbefalt-profil").innerHTML = "virker det som det skal?";
-			}
-			else if (userInputKjønn = "Kvinne") {
-				document.getElementById("anbefalt-profil").innerHTML = "eller ikke?";
-			}
 		}
 
-	</script>
+		</script>
 		
 		</main>
 		
