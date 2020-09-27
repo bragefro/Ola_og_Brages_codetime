@@ -63,10 +63,13 @@
 					<img src="images/${bildeArray[2]}">
 					<p>For deg anbefaler vi ${alderArray[2]} år gamle ${navnArray[2]}!<br>Kontakt henne da vel!</p>`;
 				}
-				else if (alder < 25){/*Her skal Zelda*/
+				if (alder < 25 && alder >=18){/*Her skal Zelda*/
 					document.getElementById("anbefalt-profil").innerHTML = `
 					<img src="images/${bildeArray[3]}">
 					<p>Vi tror ${alderArray[3]} år gamle ${navnArray[3]} og du passer bra sammen!<br>Fort deg før noen andre prøver seg!</p>`;
+				}
+				if (alder < 18) {
+					alert("STOP RIGHT THERE, CRIMINAL SCUM")
 				}
 			}
 			else if (kjønn === "mann"){
@@ -75,10 +78,13 @@
 					<img src="images/${bildeArray[0]}">
 					<p>${navnArray[0]} er i området!<br>Du kan møte han allerede ikveld!</p>`;
 				}
-				else if (alder < 25){/*Her skal Lars*/
+				if (alder < 25  && alder >=18){/*Her skal Lars*/
 					document.getElementById("anbefalt-profil").innerHTML = `
 					<img src="images/${bildeArray[1]}">
 					<p>${alderArray[1]} år gamle ${navnArray[1]} har nettopp blitt medlem hos oss!<br>Bli han første kjærlighet</p>`;
+				}
+				if (alder < 18) {
+					alert("STOP RIGHT THERE, CRIMINAL SCUM")
 				}
 			}
 
